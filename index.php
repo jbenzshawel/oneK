@@ -12,7 +12,8 @@
 <body>
 	<?php 
 		require_once "fetch-posts.php"; 
-		fetchPosts('all');
+		$subreddit = (isset($_GET['subreddit'])) ? $_GET['subreddit'] : '';
+		fetchPosts($subreddit);
 	?>
 </body>
 </html>
