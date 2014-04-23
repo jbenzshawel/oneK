@@ -4,11 +4,10 @@
  xmlns:media="http://search.yahoo.com/mrss/"
  xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
- <xsl:output method="html" doctype-system="http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"/>
+ <xsl:output method="html" />
 	<xsl:template match="/">  
 		<xsl:for-each select="rss/channel/item" >
-			<xsl:sort select="PostDate" order="descending"/>
-            <xsl:if test="not(position() > 20)">
+			<xsl:if test="position() > $after" >
 				<!--POST-->
 				<ul class="post">
 					<xsl:variable name="postLink" select="link" />

@@ -1,13 +1,12 @@
 <?php
 
-	function fetchPosts($category){
-		$category = (strlen($category) > 1) ? $category : 'all';
+	function fetchPosts($category, $limit, $after){
 	  	// Load the XML source
 		$xml = new DOMDocument;
-		if($category == "all"){
-			$feedURL = 'http://www.reddit.com/.rss';
+		if($category == "all" or strlen($category) == 0){
+			$feedURL = 'http://www.reddit.com/.rss?limit=' . $limit;
 		} else{
-			$feedURL = 'http://www.reddit.com/r/' . $category . '/.rss';
+			$feedURL = 'http://www.reddit.com/r/' . $category . '.rss?limit=' . $limit;
 		}
 		$xml->load($feedURL);
 		$xsl = new DOMDocument;
@@ -16,7 +15,8 @@
 		// Configure the transformer
 		$proc = new XSLTProcessor;
 		$proc->importStyleSheet($xsl); // attach the xsl rules
-		//$xsl = $proc ->setParameter('', 'category', $category);
+		$xsl = $proc ->setParameter('', 'category', $category);
+		$xsl = $proc ->setParameter('', 'after', $after);
 		echo $proc->transformToXML($xml);
 	}
 ?>
