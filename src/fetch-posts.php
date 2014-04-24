@@ -41,10 +41,6 @@
 			$this->rss = simplexml_load_file($this->feedURL);
 		}
 
-		/**
-		* list_latest Method lists 4 latest posts
-		* Returns string of formatted news items 
-		*/
 		public function list_posts(){
 			$i = 1;   
 			$results = "";
