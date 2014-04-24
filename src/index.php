@@ -14,8 +14,7 @@
 		
 		$URL = $_SERVER['REQUEST_URI'];
 		$category = explode("/", $URL);
-		$subreddit_string = ($_GET['subreddit']) ? $_GET['subreddit'] : '';
-		$category_string = (isset($category[2]) and ($category[2][0] != "&")) ? $category[2] : 'all';
+		$category_string = (strlen($category[2]) > 1 and ($category[2][0] != "&")) ? $category[2] : 'all';
 		$page = isset($_GET['page']) ? $_GET['page'] : 1;
 		$next_page = $page + 1;
 		$limit = 25*$page;
@@ -23,7 +22,7 @@
 		$position = stripos($category_string, "&");
 		$category_trimmed = strpos($category_string, "&") ? substr($category_string, 0, $position) : $category_string;
 		fetchPosts($category_trimmed, $limit, $after);
-		
+
 		if($category_trimmed == "all"):
 	?>
 			<a href=<?php echo '"&page=' . $next_page . '"'; ?> id="morePosts">Page <?php echo $next_page; ?></a>
