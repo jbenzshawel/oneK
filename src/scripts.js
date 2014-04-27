@@ -25,10 +25,7 @@ $(document).ready(function(){
     // Listen for changes on first row and get amount value
       $(document).on('change', target, function(){
       var subreddit = $('input[name="s"]').val();
-      console.log(subreddit);
-      console.log("submitted");
       var url = 'http://www.addison.im/oneK/' + subreddit + "/";
-      console.log(url);
       window.location.href = url;
     });
 
