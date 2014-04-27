@@ -15,6 +15,51 @@ a {
 .md {
 	display: none;
 }
+
+.wrapper {
+	margin-top:58px;
+}
+
+.main {
+	width:100%;
+	height:65px;
+	position:fixed;
+	margin-top:-15px !important;
+	background-color:#333;
+	border-bottom:1px solid #222;
+	-moz-box-shadow:    2px 2px 1px 1px #666;
+  	-webkit-box-shadow: 2px 2px 1px 1px #666;
+  	box-shadow: 2px 2px 1px 1px #666;
+
+}
+
+.main h2 a {
+	color: white;
+	font-size: 24px;
+	font-weight: lighter;
+	margin-top: 114px;
+	position: absolute;
+	top:-89px;
+	left: 93%;
+}
+
+.main h3 a {
+	color: white;
+	font-size: 24px;
+	font-weight: lighter;
+	position: absolute;
+	top:24px;
+	left:20px;
+}
+
+input[type="search"]{
+	height: 25px;
+	width: 160px;
+	font-size: 17px;
+}
+#searchSub{
+	margin-left:-2000px;
+}
 .post {
 	list-style-type: none;
 	width:98%;
@@ -51,4 +96,15 @@ a {
 	margin:15px auto;
 	display: block;
 	text-align: center;
+}
+
+@media screen and (max-width: 767px){
+	.main h2 a {
+		left:88%;
+	}
+}
+@media screen and (max-width: 480px){
+.main h2 a {
+		left:78%;
+	}
 }

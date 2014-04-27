@@ -1,4 +1,16 @@
 <?php
+	
+	function prepareInputs($URL, $subreddit, $page){
+		$category = explode("/", $URL);
+		$category_string = (strlen($category[2]) > 1 and ($category[2][0] != "&")) ? $category[2] : 'all';
+		$next_page = $page + 1;
+		$limit = 25*$page;
+		$after = $limit - 25;
+		$position = stripos($category_string, "&");
+		$category_trimmed = strpos($category_string, "&") ? substr($category_string, 0, $position) : $category_string;
+		$preparedInputs = array("category" => $category_trimmed, "position" => $position, "limit" => $limit, "after" => $after);
+		return $preparedInputs;
+	}
 
 	function fetchPosts($category, $limit, $after){
 	  	// Load the XML source
@@ -20,6 +32,10 @@
 		echo $proc->transformToXML($xml);
 	}
 
+	/**
+	 * Class to parse RSS feed (pure PHP approach instead of using XSLT)
+	 * list_posts method prints out posts of RSS feed with html tags
+	 */
 	class fetchRedditPosts {
 		// Initialize variables
 		private $feedURL;

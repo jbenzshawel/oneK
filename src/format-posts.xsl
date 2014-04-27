@@ -20,6 +20,7 @@
 						<li><img src="http://placehold.it/75x75" /></li>
 					</xsl:if>
 					<li><xsl:value-of select="description" disable-output-escaping="yes"/></li>
+					<!--<li><xsl:number value="positon()" format="1." /></li>-->
 				</ul>
 			</xsl:if>
 		</xsl:for-each>
